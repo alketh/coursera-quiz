@@ -36,8 +36,23 @@ fit <- lm(y~x)
 predict(fit, newdata = data.frame(x = 3), interval = "prediction")
 
 # question 6
+# Consider again the mtcars data set and a linear regression model with mpg as predicted by 
+# weight (in 1,000 lbs). A “short” ton is defined as 2,000 lbs. Construct a 95% confidence 
+# interval for the expected change in mpg per 1 short ton increase in weight. Give the lower 
+# endpoint.
+
+cars2 <- mtcars
+cars2$wt <- cars2$wt/2
+
+model <- lm(mpg ~ wt, data = cars2)
+
+sumCoef <- summary(model)$coefficients
+sumCoef[2,1] + c(-1,1) * qt(.975, df=fit$df) * sumCoef[2,2]
 
 # question 7
+# If my X from a linear regression is measured in centimeters and I convert it to meters 
+# what would happen to the slope coefficient?
+
 
 # question 8
 

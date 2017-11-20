@@ -1,0 +1,23 @@
+---
+title: "kayak archipelago sea"
+output: html_document
+---
+
+## 3 day kayak trip in Finland
+
+# 2017.11.20
+
+```{r}
+library("leaflet")
+
+positions <- data.frame(lat = c(60.2976508, 60.2045143, 60.2429128),
+                        lng = c(22.3042369, 22.1801350, 22.0912870))
+
+my_map <- positions %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(popup = c("start/stop", "day1", "day2"))
+
+my_map
+```
+
