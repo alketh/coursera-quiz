@@ -1,0 +1,24 @@
+---
+title: "Diamonds"
+output: html_document
+---
+
+## 2017.11.20
+
+```{r}
+suppressPackageStartupMessages(library("plotly"))
+suppressPackageStartupMessages(library("ggplot2"))
+
+set.seed(1234)
+
+pd <- diamonds[sample(1:nrow(diamonds), size = 10000), ]
+
+p <- ggplot(pd, aes(x = carat, y = price, col = color)) +
+  geom_point() +
+  geom_smooth()
+
+p <- ggplotly(p)
+
+p
+```
+
